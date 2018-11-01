@@ -1,6 +1,7 @@
 package com.khaledothmane.recipeproject.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Recipe {
@@ -22,6 +23,9 @@ public class Recipe {
 
     @Lob
     private Byte[] image;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    Set<Ingredient> ingredients;
 
     public Long getId() {
         return id;
