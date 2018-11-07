@@ -1,4 +1,9 @@
 INSERT INTO category (name) VALUES('American');
 INSERT INTO category (name) VALUES('Mexican');
-INSERT INTO unit_of_measure (uom) VALUES('Teaspoon');
+INSERT INTO unit_of_measure (uom) VALUES('Tablespoon');
 INSERT INTO unit_of_measure (uom) VALUES('Piston');
+INSERT INTO unit_of_measure (uom) VALUES('Each');
+INSERT INTO unit_of_measure (uom) VALUES('Dash');
+INSERT INTO unit_of_measure (uom) VALUES('Pint');
+INSERT INTO unit_of_measure (uom) VALUES('Cup');
+INSERT INTO unit_of_measure (uom) VALUES('Teaspoon');

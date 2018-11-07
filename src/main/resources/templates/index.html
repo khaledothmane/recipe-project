@@ -6,5 +6,10 @@
 </head>
 <body>
 <h1 th:text="'My Recipes home page.'">My Recipes home page.</h1>
+
+<div th:each="recipe : ${recipes}">
+    Recipe: <a href="#" th:text="${recipe?.id}"></a>
+    <p th:text="${recipe?.description}"></p>
+</div>
 </body>
 </html>

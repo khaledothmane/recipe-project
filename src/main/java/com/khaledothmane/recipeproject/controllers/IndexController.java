@@ -1,33 +1,28 @@
 package com.khaledothmane.recipeproject.controllers;
 
-import com.khaledothmane.recipeproject.model.Category;
-import com.khaledothmane.recipeproject.model.UnitOfMeasure;
-import com.khaledothmane.recipeproject.repositories.CategoryRepository;
-import com.khaledothmane.recipeproject.repositories.UnitOfMeasureRepository;
+import com.khaledothmane.recipeproject.model.Recipe;
+import com.khaledothmane.recipeproject.services.RecipeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Optional;
 
 @Controller
+@RequestMapping
 public class IndexController {
 
-    private CategoryRepository categoryRepository;
-    private UnitOfMeasureRepository unitOfMeasureRepository;
+    private final RecipeService recipeService;
 
-    public IndexController(CategoryRepository categoryRepository, UnitOfMeasureRepository unitOfMeasureRepository) {
-        this.categoryRepository = categoryRepository;
-        this.unitOfMeasureRepository = unitOfMeasureRepository;
+    @Autowired
+    public IndexController(RecipeService recipeService) {
+        this.recipeService = recipeService;
     }
 
     @RequestMapping({"", "/", "/index"})
-    public String getIndexPage() {
+    public String getIndexPage(Model model) {
 
-        Optional<Category> category = categoryRepository.findByName("American");
-        System.out.println("#### Category" + category.get());
-
-        Optional<UnitOfMeasure> unitOfMeasure = unitOfMeasureRepository.findByUom("Piston");
-        System.out.println("#### Unit of measue : " + unitOfMeasure.get());
+        model.addAttribute("recipes", recipeService.getRecipes());
         
         return "index";
     }
