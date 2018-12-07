@@ -38,11 +38,6 @@ public class RecipeServiceImplTest {
         this.recipeService = null;
     }
 
-    @AfterClass
-    public static void tearDown2() throws Exception {
-        System.out.println("after class");
-    }
-
     @Test
     public void getRecipes() {
 
