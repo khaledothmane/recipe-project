@@ -3,13 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Recipe Home</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+
 </head>
 <body>
-<h1 th:text="'My Recipes home page.'">My Recipes home page.</h1>
 
-<div th:each="recipe : ${recipes}">
-    Recipe: <a href="#" th:text="${recipe?.id}"></a>
-    <p th:text="${recipe?.description}"></p>
+<div class="jumbotron">
+    <h1 class="display-3" th:text="'My Recipes home page.'">...</h1>
+    <p class="lead">This is a simple Recipe app, using Spring 5's features</p>
+    <hr class="my-4">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Description</th>
+            <th scope="col">Cook Time</th>
+            <th scope="col">Servings</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="recipe : ${recipes}">
+            <td th:text="${recipe?.id}"></td>
+            <td th:text="${recipe?.description}"></td>
+            <td th:text="${recipe?.cookTime}">0</td>
+            <td th:text="${recipe?.servings}">0</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
