@@ -8,6 +8,9 @@ jobs:
 
     working_directory: ~/recipe-project
 
+    environment:
+      MAVEN_OPTS: -Xmx3200m
+
     docker:
     - image: circleci/openjdk:8-jdk-browsers
 
