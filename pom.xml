@@ -89,23 +89,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<!-- CircleCI build workaround -->
-					<argLine>${surefireArgLine} -Xms1024m -Xmx2048m</argLine>
-					<reuseForks>true</reuseForks>
-				</configuration>
-				<version>2.22.0</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>test</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
 
