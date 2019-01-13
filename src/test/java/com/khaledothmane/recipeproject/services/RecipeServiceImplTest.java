@@ -3,7 +3,6 @@ package com.khaledothmane.recipeproject.services;
 import com.khaledothmane.recipeproject.model.Recipe;
 import com.khaledothmane.recipeproject.repositories.RecipeRepository;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -39,7 +38,7 @@ public class RecipeServiceImplTest {
     }
 
     @Test
-    public void getRecipes() {
+    public void getRecipesTest() {
 
         HashSet<Recipe> recipes2 = new HashSet<>();
         recipes2.add(new Recipe());
