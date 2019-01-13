@@ -97,7 +97,8 @@
                             <div class="col-md-12">
                                 <ul>
                                 <li th:each="ingredient : ${recipe.ingredients}">
-                                    <b th:text="${ingredient?.amount}"></b> <span th:text="${ingredient?.description}">Ingredient 1</span>
+                                    <b th:text="${ingredient?.amount} + ${ingredient?.unitOfMeasure.uom}"></b>
+                                    <span th:text="${ingredient?.description}">Ingredient 1</span>
                                 </li>
                                 </ul>
                             </div>
