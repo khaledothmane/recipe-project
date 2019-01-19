@@ -1,11 +1,14 @@
 package com.khaledothmane.recipeproject.services;
 
+import com.khaledothmane.recipeproject.commands.RecipeCommand;
+import com.khaledothmane.recipeproject.converters.RecipeCommandToRecipe;
+import com.khaledothmane.recipeproject.converters.RecipeToRecipeCommand;
 import com.khaledothmane.recipeproject.model.Recipe;
 import com.khaledothmane.recipeproject.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -15,10 +18,14 @@ import java.util.Set;
 public class RecipeServiceImpl implements RecipeService {
 
     private final RecipeRepository recipeRepository;
+    private final RecipeCommandToRecipe recipeCommandToRecipe;
+    private final RecipeToRecipeCommand recipeToRecipeCommand;
 
     @Autowired
-    public RecipeServiceImpl(RecipeRepository recipeRepository) {
+    public RecipeServiceImpl(RecipeRepository recipeRepository, RecipeCommandToRecipe recipeCommandToRecipe, RecipeToRecipeCommand recipeToRecipeCommand) {
         this.recipeRepository = recipeRepository;
+        this.recipeCommandToRecipe = recipeCommandToRecipe;
+        this.recipeToRecipeCommand = recipeToRecipeCommand;
     }
 
     @Override
@@ -36,5 +43,14 @@ public class RecipeServiceImpl implements RecipeService {
             throw new RuntimeException("Recipe Cannot be found");
         }
         return recipe.get();
+    }
+
+    @Override
+    @Transactional
+    public RecipeCommand saveRecipeCommand(RecipeCommand command) {
+        Recipe detached_recipe = recipeCommandToRecipe.convert(command);
+        Recipe savedRecipe = recipeRepository.save(detached_recipe);
+        log.debug("Recipe has been saved under Id: " + savedRecipe.getId());
+        return recipeToRecipeCommand.convert(savedRecipe);
     }
 }

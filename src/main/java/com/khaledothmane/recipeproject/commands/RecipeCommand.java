@@ -1,10 +1,16 @@
 package com.khaledothmane.recipeproject.commands;
 
 import com.khaledothmane.recipeproject.model.Difficulty;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class RecipeCommand {
     private Long id;
     private String description;
