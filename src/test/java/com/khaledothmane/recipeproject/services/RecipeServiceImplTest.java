@@ -47,7 +47,7 @@ public class RecipeServiceImplTest {
         /**
          * It's normal to get 0 size of recipes, while the persistence is bootstrap along with
          * Spring context which we are not using yet.
-         * TODO: forcing getRecipes() to return size 1.
+         * forcing getRecipes() to return size 1.
          */
         Set<Recipe> recipes = recipeService.getRecipes(); // returns 0
 
