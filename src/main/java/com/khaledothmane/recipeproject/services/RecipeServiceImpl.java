@@ -17,9 +17,9 @@ import java.util.Set;
 @Service @Slf4j
 public class RecipeServiceImpl implements RecipeService {
 
-    private final RecipeRepository recipeRepository;
-    private final RecipeCommandToRecipe recipeCommandToRecipe;
-    private final RecipeToRecipeCommand recipeToRecipeCommand;
+    final RecipeRepository recipeRepository;
+    final RecipeCommandToRecipe recipeCommandToRecipe;
+    final RecipeToRecipeCommand recipeToRecipeCommand;
 
     @Autowired
     public RecipeServiceImpl(RecipeRepository recipeRepository, RecipeCommandToRecipe recipeCommandToRecipe, RecipeToRecipeCommand recipeToRecipeCommand) {

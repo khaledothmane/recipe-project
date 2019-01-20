@@ -1,5 +1,7 @@
 package com.khaledothmane.recipeproject.services;
 
+import com.khaledothmane.recipeproject.converters.RecipeCommandToRecipe;
+import com.khaledothmane.recipeproject.converters.RecipeToRecipeCommand;
 import com.khaledothmane.recipeproject.model.Recipe;
 import com.khaledothmane.recipeproject.repositories.RecipeRepository;
 import org.junit.After;
@@ -22,6 +24,8 @@ public class RecipeServiceImplTest {
 
     @Mock
     RecipeRepository recipeRepository;
+    RecipeCommandToRecipe recipeCommandToRecipe;
+    RecipeToRecipeCommand recipeToRecipeCommand;
 
     @Before
     public void setUp() throws Exception {
