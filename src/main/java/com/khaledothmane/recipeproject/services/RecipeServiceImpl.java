@@ -51,6 +51,7 @@ public class RecipeServiceImpl implements RecipeService {
         Recipe detached_recipe = recipeCommandToRecipe.convert(command);
         Recipe savedRecipe = recipeRepository.save(detached_recipe);
         log.debug("Recipe has been saved under Id: " + savedRecipe.getId());
-        return recipeToRecipeCommand.convert(savedRecipe);
+        RecipeCommand returnedRecipe = recipeToRecipeCommand.convert(savedRecipe);
+        return returnedRecipe;
     }
 }

@@ -6,8 +6,8 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.*;
 
 @Data
-@EqualsAndHashCode(exclude = {"recipe"})
 @Entity
+@EqualsAndHashCode(exclude = "recipe")
 public class Notes {
 
     @Id
@@ -15,10 +15,16 @@ public class Notes {
     private Long id;
 
     @OneToOne
-    // Cascading isn't necessary here. Deleting notes shouldn't delete the recipe.
     private Recipe recipe;
 
     @Lob
     private String recipeNotes;
 
+    @Override
+    public String toString() {
+        return "Notes{" +
+                "id=" + id +
+                ", recipeNotes='" + recipeNotes + '\'' +
+                '}';
+    }
 }
