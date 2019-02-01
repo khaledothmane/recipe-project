@@ -29,7 +29,7 @@ public class IngredientCommandToIngredient implements Converter<IngredientComman
         target.setId(source.getId());
         target.setDescription(source.getDescription());
         target.setAmount(source.getAmount());
-        target.setUnitOfMeasure(converter.convert(source.getUom()));
+        target.setUnitOfMeasure(converter.convert(source.getUnitOfMeasureCommand()));
 
         return target;
     }

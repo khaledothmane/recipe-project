@@ -1,6 +1,7 @@
 package com.khaledothmane.recipeproject.controllers;
 
 import com.khaledothmane.recipeproject.commands.RecipeCommand;
+import com.khaledothmane.recipeproject.converters.RecipeToRecipeCommand;
 import com.khaledothmane.recipeproject.model.Difficulty;
 import com.khaledothmane.recipeproject.model.Recipe;
 import com.khaledothmane.recipeproject.services.RecipeService;
@@ -20,7 +21,7 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
-    @RequestMapping({"/recipe/show/{id}"})
+    @RequestMapping({"/recipe/{id}/show"})
     public String showById(@PathVariable String id, Model model) {
         Recipe recipeById = recipeService.getRecipeById(new Long(id));
         model.addAttribute("recipe", recipeById);
@@ -40,6 +41,13 @@ public class RecipeController {
     public String saveOrUpdate(@ModelAttribute RecipeCommand recipeCommand) {
         System.out.println(recipeCommand.hashCode());
         RecipeCommand savedRecipe = recipeService.saveRecipeCommand(recipeCommand);
-        return "redirect:/recipe/show/" + savedRecipe.getId();
+        return "redirect:/recipe/" + savedRecipe.getId() + "/show";
+    }
+
+    @RequestMapping("recipe/{id}/edit")
+    public String updateRecipe(@PathVariable String id, Model model) {
+        RecipeCommand recipe = recipeService.getRecipeCommandById(Long.valueOf(id));
+        model.addAttribute("recipe", recipe);
+        return "recipe/recipeform";
     }
 }

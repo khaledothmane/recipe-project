@@ -89,11 +89,8 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
-                                <div class="col-md-11 ">
+                                <div class="col-md-12 ">
                                     <h1 class="panel-title">Ingredients</h1>
-                                </div>
-                                <div class="col-md-1">
-                                    <a class="btn btn-default" href="#" role="button">Edit</a>
                                 </div>
                             </div>
                         </div>
@@ -103,10 +100,9 @@
                                     <ul>
                                         <li th:remove="all">1 Cup of milk</li>
                                         <li th:remove="all">1 Teaspoon of chocolate</li>
-                                        <li th:each="ingredient : ${recipe.ingredients}"
-                                            th:text="${(ingredient.getAmount() +
-                                        ' ' + ingredient.uom.getDescription() +
-                                        ' - ' + ingredient.getUom())}">1 Teaspoon of Sugar
+                                        <li th:each="ingredient : ${recipe.ingredients}">
+                                            <b th:text="${ingredient?.amount} + ' ' + ${ingredient?.unitOfMeasureCommand.uom}"></b>
+                                            <span th:text="${ingredient?.description}">Ingredient 1</span>
                                         </li>
                                     </ul>
                                 </div>

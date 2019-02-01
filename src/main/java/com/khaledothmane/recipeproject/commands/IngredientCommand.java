@@ -14,5 +14,5 @@ public class IngredientCommand {
     private Long id;
     private String Description;
     private BigDecimal amount;
-    private UnitOfMeasureCommand uom;
+    private UnitOfMeasureCommand unitOfMeasureCommand;
 }
