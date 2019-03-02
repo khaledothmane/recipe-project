@@ -1,6 +1,5 @@
 package com.khaledothmane.recipeproject.controllers;
 
-import com.khaledothmane.recipeproject.commands.RecipeCommand;
 import com.khaledothmane.recipeproject.services.RecipeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
