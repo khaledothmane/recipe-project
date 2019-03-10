@@ -65,4 +65,5 @@ public class IngredientServiceImplTest {
         verify(recipeRepository, times(1)).findById(anyLong());
 
     }
+
 }

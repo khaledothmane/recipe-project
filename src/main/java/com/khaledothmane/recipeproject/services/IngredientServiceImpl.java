@@ -62,4 +62,14 @@ public class IngredientServiceImpl implements IngredientService {
             return converter.convert(saved);
         }
     }
+
+    @Override
+    public void deleteIngredient(Long ingredientId) {
+        Optional<Ingredient> optionalIngredient = ingredientRepository.findById(ingredientId);
+        if (!optionalIngredient.isPresent()) {
+            log.error("Cannot find ingredient by ID: ", ingredientId);
+        }
+        log.info("Deleting ingredient with ID: " + ingredientId);
+        ingredientRepository.delete(optionalIngredient.get());
+    }
 }
