@@ -2,6 +2,7 @@ package com.khaledothmane.recipeproject.converters;
 
 import com.khaledothmane.recipeproject.commands.IngredientCommand;
 import com.khaledothmane.recipeproject.model.Ingredient;
+import com.khaledothmane.recipeproject.model.Recipe;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
@@ -26,6 +27,11 @@ public class IngredientCommandToIngredient implements Converter<IngredientComman
         }
 
         final Ingredient target = new Ingredient();
+        if(source.getRecipeId() != null){
+            Recipe recipe = new Recipe();
+            recipe.setId(source.getRecipeId());
+            target.setRecipe(recipe);
+        }
         target.setId(source.getId());
         target.setDescription(source.getDescription());
         target.setAmount(source.getAmount());
