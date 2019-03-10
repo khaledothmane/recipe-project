@@ -1,6 +1,7 @@
 package com.khaledothmane.recipeproject.controllers;
 
 import com.khaledothmane.recipeproject.commands.IngredientCommand;
+import com.khaledothmane.recipeproject.commands.UnitOfMeasureCommand;
 import com.khaledothmane.recipeproject.services.IngredientService;
 import com.khaledothmane.recipeproject.services.RecipeService;
 import com.khaledothmane.recipeproject.services.UnitOfMeasureService;

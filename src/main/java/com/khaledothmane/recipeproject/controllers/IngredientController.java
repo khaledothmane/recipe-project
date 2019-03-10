@@ -2,6 +2,7 @@ package com.khaledothmane.recipeproject.controllers;
 
 import com.khaledothmane.recipeproject.commands.IngredientCommand;
 import com.khaledothmane.recipeproject.commands.RecipeCommand;
+import com.khaledothmane.recipeproject.commands.UnitOfMeasureCommand;
 import com.khaledothmane.recipeproject.services.IngredientService;
 import com.khaledothmane.recipeproject.services.RecipeService;
 import com.khaledothmane.recipeproject.services.UnitOfMeasureService;
@@ -73,6 +74,18 @@ public class IngredientController {
                                    @PathVariable("ingredient_id") String ingredientId) {
         ingredientService.deleteIngredient(Long.valueOf(ingredientId));
         return "redirect:/recipe/" + recipeId + "/show";
+    }
+
+    @RequestMapping("/recipe/{recipe_id}/ingredient/new")
+    public String addNewIngredient(@PathVariable("recipe_id") String recipe_id, Model model) {
+        Long recipeId = Long.valueOf(recipe_id);
+        UnitOfMeasureCommand unitOfMeasureCommand = new UnitOfMeasureCommand();
+        IngredientCommand ingredientCommand = new IngredientCommand();
+        ingredientCommand.setRecipeId(recipeId);
+        ingredientCommand.setUnitOfMeasureCommand(unitOfMeasureCommand);
+        model.addAttribute("ingredient", ingredientCommand);
+        model.addAttribute("uomSet", unitOfMeasureService.setOfUom());
+        return "recipe/ingredient/ingredientform";
     }
 
 }

@@ -39,7 +39,7 @@ public class IngredientServiceImpl implements IngredientService {
         if (!optionalRecipe.isPresent()) {
             throw new RuntimeException("Cannot find Recipe by ID: " + recipeId);
         }
-        log.info("Getting ingredient for Recipe by ID: ", recipeId);
+        log.debug("Getting ingredient for Recipe by ID: ", optionalRecipe.get().getId());
         Optional<Ingredient> optionalIngredient = optionalRecipe.get().getIngredients().stream()
                 .filter(ingredient -> ingredient.getId() == ingredientId)
                 .findFirst();
