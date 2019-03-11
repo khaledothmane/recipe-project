@@ -32,7 +32,6 @@ public class RecipeController {
     public String addRecipe(Model model) {
         RecipeCommand recipeAtt = new RecipeCommand();
         recipeAtt.setSource("Author: KHALED Othmane");
-        recipeAtt.setDifficulty(Difficulty.MODERATE);
         model.addAttribute("recipe", recipeAtt);
         return "recipe/recipeform";
     }
