@@ -54,4 +54,8 @@ public class RecipeController {
         recipeService.deleteRecipe(Long.valueOf(id));
         return "redirect:/";
     }
+
+    public String showImageForm(@PathVariable("recipe_id") String recipe_id, Model model) {
+        return "recipe/imageform";
+    }
 }
